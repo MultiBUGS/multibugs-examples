@@ -1,0 +1,52 @@
+model {
+  # Outcomes with person-level data available
+  for (i in 1:n.indexed) {
+    outcome.y[i] ~ dnorm(mu.indexed[i], tau.e)
+    mu.indexed[i] <- beta[1] * x1[i] +
+                     beta[2] * x2[i] +
+                     beta[3] * x3[i] +
+                     beta[4] * x4[i] +
+                     region.effect[region.indexed[i]] +
+                     source.effect[region.indexed[i]] * source.indexed[i] +
+                     person.effect[person.indexed[i]]
+  }
+
+  # Outcomes without person-level data available
+  for (i in 1:n.nonindexed){
+    outcome.z[i] ~ dnorm(mu.nonindexed[i], tau.epsilon)
+    mu.nonindexed[i] <- lambda +
+                        region.effect[region.nonindexed[i]] +
+                        source.effect[region.nonindexed[i]] *
+                                      source.nonindexed[i]
+  }
+
+  # Hierarchical priors
+  for (i in 1:n.persons){
+    person.effect[i] ~ dnorm(0, tau.person)
+  }
+  for (i in 1:n.regions) {
+    region.effect[i] ~ dnorm(mu.region, tau.region)
+    source.effect[i] ~ dnorm(mu.source, tau.source)
+  }
+
+  lambda ~ dnorm(0, 0.0001)
+  mu.region ~ dnorm(0, 0.0001)
+  mu.source ~ dnorm(0, 0.0001)
+
+  # Priors for regression parameters
+  for (m in 1:4){
+    beta[m] ~ dnorm(0, 0.0001)
+  }
+
+  # Priors for variance parameters
+  tau.epsilon <- 1/pow(sd.epsilon, 2)
+  sd.epsilon ~ dunif(0, 10)
+  tau.e <- 1/pow(sd.e, 2)
+  sd.e ~ dunif(0, 10)
+  tau.person <- 1/pow(sd.person, 2)
+  sd.person ~ dunif(0, 10)
+  tau.source <- 1/pow(sd.source, 2)
+  sd.source ~ dunif(0, 10)
+  tau.region <- 1/pow(sd.region, 2)
+  sd.region ~ dunif(0, 10)
+}

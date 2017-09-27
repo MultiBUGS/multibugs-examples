@@ -1,0 +1,31 @@
+# All paths in this script must point towards the directory containing the models, data etc
+# If this is not C:\multibugs-examples we suggest using find-and-replace (Ctrl-F) to correct the whole script
+# Use forward slashes in paths
+
+# Load model, data and compile
+modelCheck("H:/analyses/bigbugs/multibugs-examples/seeds_model.txt")
+modelData("H:/analyses/bigbugs/multibugs-examples/seeds_data.txt")
+modelCompile(2)
+
+# Load initial conditions
+modelInits("H:/analyses/bigbugs/multibugs-examples/seeds_inits1.txt", 1)
+modelInits("H:/analyses/bigbugs/multibugs-examples/seeds_inits2.txt", 2)
+modelGenInits()
+
+# Distribute the model to 2 processes
+modelDistribute(2)
+
+# Run 1000 iterations burn-in
+modelUpdate(1000)
+
+# Start monitoring and run 10,000 iterations
+samplesSet(alpha0)
+samplesSet(alpha1)
+samplesSet(alpha12)
+samplesSet(alpha2)
+samplesSet(sigma)
+modelUpdate(10000)
+
+# View posterior summaries and densities
+samplesStats("*")
+samplesDensity("*")

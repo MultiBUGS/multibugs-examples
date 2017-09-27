@@ -1,0 +1,31 @@
+# All paths in this script must point towards the directory containing the models, data etc
+# If this is not C:\multibugs-examples we suggest using find-and-replace (Ctrl-F) to correct the whole script
+# Use forward slashes in paths
+
+# Load model, data and compile
+modelCheck("H:/analyses/bigbugs/multibugs-examples/ehealth_model.txt")
+modelData("H:/analyses/bigbugs/multibugs-examples/ehealth_data_id_available.txt")
+modelData("H:/analyses/bigbugs/multibugs-examples/ehealth_data_id_missing.txt")
+modelData("H:/analyses/bigbugs/multibugs-examples/ehealth_data_n.txt")
+modelCompile(2)
+
+# Load initial conditions
+modelInits("H:/analyses/bigbugs/multibugs-examples/ehealth_inits.txt")
+modelInits("H:/analyses/bigbugs/multibugs-examples/ehealth_inits2.txt")
+modelGenInits()
+
+# Distribute the model to 2 processes
+modelDistribute(2)
+
+# Run 5000 iterations burn-in
+modelUpdate(5000)
+
+# Start monitoring and run 10,000 iterations
+samplesSet(beta)
+samplesSet(sd.region)
+samplesSet(sd.source)
+modelUpdate(10000)
+
+# View posterior summaries and densities
+samplesStats("*")
+samplesDensity("*")
