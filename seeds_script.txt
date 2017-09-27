@@ -3,13 +3,13 @@
 # Use forward slashes in paths
 
 # Load model, data and compile
-modelCheck("H:/analyses/bigbugs/multibugs-examples/seeds_model.txt")
-modelData("H:/analyses/bigbugs/multibugs-examples/seeds_data.txt")
+modelCheck("C:/multibugs-examples/seeds_model.txt")
+modelData("C:/multibugs-examples/seeds_data.txt")
 modelCompile(2)
 
 # Load initial conditions
-modelInits("H:/analyses/bigbugs/multibugs-examples/seeds_inits1.txt", 1)
-modelInits("H:/analyses/bigbugs/multibugs-examples/seeds_inits2.txt", 2)
+modelInits("C:/multibugs-examples/seeds_inits1.txt", 1)
+modelInits("C:/multibugs-examples/seeds_inits2.txt", 2)
 modelGenInits()
 
 # Distribute the model to 2 processes
