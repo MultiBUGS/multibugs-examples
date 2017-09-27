@@ -3,15 +3,15 @@
 # Use forward slashes in paths
 
 # Load model, data and compile
-modelCheck("H:/analyses/bigbugs/multibugs-examples/ehealth_model.txt")
-modelData("H:/analyses/bigbugs/multibugs-examples/ehealth_data_id_available.txt")
-modelData("H:/analyses/bigbugs/multibugs-examples/ehealth_data_id_missing.txt")
-modelData("H:/analyses/bigbugs/multibugs-examples/ehealth_data_n.txt")
+modelCheck("C:/multibugs-examples/ehealth_model.txt")
+modelData("C:/multibugs-examples/ehealth_data_id_available.txt")
+modelData("C:/multibugs-examples/ehealth_data_id_missing.txt")
+modelData("C:/multibugs-examples/ehealth_data_n.txt")
 modelCompile(2)
 
 # Load initial conditions
-modelInits("H:/analyses/bigbugs/multibugs-examples/ehealth_inits.txt")
-modelInits("H:/analyses/bigbugs/multibugs-examples/ehealth_inits2.txt")
+modelInits("C:/multibugs-examples/ehealth_inits.txt")
+modelInits("C:/multibugs-examples/ehealth_inits2.txt")
 modelGenInits()
 
 # Distribute the model to 2 processes
