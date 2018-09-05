@@ -1,15 +1,13 @@
-# All paths in this script must point towards the directory containing the models, data etc
-# If this is not C:\multibugs-examples we suggest using find-and-replace (Ctrl-F) to correct the whole script
-# Use forward slashes in paths
+modelSetWD("C:/multibugs-examples/")
 
 # Load model, data and compile
-modelCheck("C:/multibugs-examples/seeds_model.txt")
-modelData("C:/multibugs-examples/seeds_data.txt")
+modelCheck("seeds_model.txt")
+modelData("seeds_data.txt")
 modelCompile(2)
 
 # Load initial conditions
-modelInits("C:/multibugs-examples/seeds_inits1.txt", 1)
-modelInits("C:/multibugs-examples/seeds_inits2.txt", 2)
+modelInits("seeds_inits1.txt", 1)
+modelInits("seeds_inits2.txt", 2)
 modelGenInits()
 
 # Distribute the model to 2 processes
@@ -29,3 +27,5 @@ modelUpdate(10000)
 # View posterior summaries and densities
 samplesStats("*")
 samplesDensity("*")
+
+modelSaveLog("log.txt")
