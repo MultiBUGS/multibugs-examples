@@ -30,3 +30,4 @@ samplesStats("*")
 samplesDensity("*")
 
 modelSaveLog("ehealth-log.txt")
+modelQuit("yes")

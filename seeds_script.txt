@@ -30,3 +30,4 @@ samplesStats("*")
 samplesDensity("*")
 
 modelSaveLog("log.txt")
+modelQuit("yes")
