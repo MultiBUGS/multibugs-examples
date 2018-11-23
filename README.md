@@ -1,4 +1,10 @@
-# paper-examples
+# Code for MultiBUGS paper
+
+This repository contains the models, data, inits and scripts required to replicate the results in
+
+Goudie, R. J. B., Turner, R. M., De Angelis, D., Thomas, A. (2017) MultiBUGS: A parallel implementation of the BUGS modelling framework for faster Bayesian inference [arXiv:1704.03216](https://arxiv.org/abs/1704.03216)
+
+## Seeds example
 
 To run the `seeds` model script from the command line, edit the code as follows, and then run from the Windows CMD.
 
@@ -10,6 +16,8 @@ To run the `seeds` model script from the command line, edit the code as follows,
 cd C:/MultiBUGS/
 MultiBUGS.exe /PAR C:/multibugs-examples/seeds_script.txt
 ```
+
+## E-health example
 
 To run the `e-health` model script from the command line, edit the code as follows, and then run from the Windows CMD.
 
